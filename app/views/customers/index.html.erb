@@ -1,43 +1,12 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">Hajusarhitektuurid veebirakendus</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="nav-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+<div class="container">
 
-    <div class="container">
-
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>Customers</h1>
-        <table>
+  <div class="hero-unit">
+    <h1>Customers</h1>
+    <table class="table table-hover table-striped table-bordered">
+    	<thead>
 			<tr>
 				<th>
-					id
+					ID
 				</th>
 
 				<th>
@@ -47,7 +16,12 @@
 				<th>
 					Perenimi
 				</th>
+
+				<th>
+				</td>
 			</tr>
+		</thead>
+		<tbody>
 			<% @customers.each do |customer| %>
 				<tr>
 					<td>
@@ -61,19 +35,25 @@
 					<td>
 						<%= customer.lastName %>
 					</td>
+
+					<td>
+						<%= link_to "View", customer_path(customer.id) %>
+					</td>
 				</tr>
 			<% end %>
-		</table>
-        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-      </div>
+		</tbody>
+	</table>
+	
+	<p><%= link_to "Add a new customer", new_customer_path, :class => 'btn btn-primary btn-large' -%></p>
+  </div>
 
-      <hr>
+  <hr>
 
-      <footer>
-        <p>&copy; Hajusarhitektuurid IDU0210 (Sügis 2012)</p>
-      </footer>
+  <footer>
+    <p>Hajusarhitektuurid IDU0210 (Sügis 2012)</p>
+  </footer>
 
-    </div> <!-- /container -->
+</div> <!-- /container -->
 
 
 

@@ -7,4 +7,8 @@ class CustomersController < ApplicationController
   def show
   	@customer = CustomerService.new.getCustomer(params[:id])
   end
+
+  def new
+  	@customer = Customer.new
+  end
 end

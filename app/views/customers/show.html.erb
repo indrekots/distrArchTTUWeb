@@ -1,33 +1,66 @@
-<h1>Customer</h1>
+<div class="container">
+	<div class="hero-unit">
+		<h1>Customer</h1>
 
-<table>
-	<tr>
-		<td>
-			Eesnimi
-		</td>
+		<% if @customer != nil %>
+			<table class="table table-hover table-striped table-bordered">
+				<tr>
+					<td>
+						Eesnimi
+					</td>
 
-		<td>
-			<%= @customer.firstName %>
-		</td>
-	</tr>
+					<td>
+						<%= @customer.firstName %>
+					</td>
+				</tr>
 
-	<tr>
-		<td>
-			Perenimi
-		</td>
+				<tr>
+					<td>
+						Perenimi
+					</td>
 
-		<td>
-			<%= @customer.lastName %>
-		</td>
-	</tr>
+					<td>
+						<%= @customer.lastName %>
+					</td>
+				</tr>
 
-	<tr>
-		<td>
-			ID kood
-		</td>
+				<tr>
+					<td>
+						ID kood
+					</td>
 
-		<td>
-			<%= @customer.identityCode %>
-		</td>
-	</tr>
-</table>
+					<td>
+						<%= @customer.identityCode %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Kirjeldus
+					</td>
+
+					<td>
+						<%= @customer.note %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Sünnipäev
+					</td>
+
+					<td>
+						<%= @customer.birthDate %>
+					</td>
+				</tr>
+			</table>
+		<% else %>
+			<h2>No customer found</h2>
+		<% end %>
+	</div>
+
+	<hr/>
+    <footer>
+    	<p>Hajusarhitektuurid IDU0210 (Sügis 2012)</p>
+    </footer>
+</div>
