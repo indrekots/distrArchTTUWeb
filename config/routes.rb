@@ -1,5 +1,6 @@
 Webapp::Application.routes.draw do
-  get "customers/index"
+  
+  resources :customers
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

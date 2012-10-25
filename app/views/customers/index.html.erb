@@ -1,32 +1,80 @@
-<h1>Customers</h1>
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Project name</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
-<table>
-	<tr>
-		<th>
-			id
-		</th>
+    <div class="container">
 
-		<th>
-			Eesnimi
-		</th>
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Customers</h1>
+        <table>
+			<tr>
+				<th>
+					id
+				</th>
 
-		<th>
-			Perenimi
-		</th>
-	</tr>
-	<tr>
-		<td>
-			<%= @customer.id %>
-		</td>
+				<th>
+					Eesnimi
+				</th>
 
-		<td>
-			<%= @customer.firstName %>
-		</td>
+				<th>
+					Perenimi
+				</th>
+			</tr>
+			<% @customers.each do |customer| %>
+				<tr>
+					<td>
+						<%= customer.id %>
+					</td>
 
-		<td>
-			<%= @customer.lastName %>
-		</td>
-	</tr>
-</table>
+					<td>
+						<%= customer.firstName %>
+					</td>
+
+					<td>
+						<%= customer.lastName %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2012</p>
+      </footer>
+
+    </div> <!-- /container -->
+
 
 
