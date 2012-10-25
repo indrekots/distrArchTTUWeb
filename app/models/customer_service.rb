@@ -9,7 +9,11 @@ class CustomerService
 	end
 
 	def getCustomer(id)
-		@customerDAO.getCustomer(id)
+		return @customerDAO.getCustomer(id)
+	end
+
+	def getCustomers
+		return @customerDAO.getCustomers
 	end
 
 

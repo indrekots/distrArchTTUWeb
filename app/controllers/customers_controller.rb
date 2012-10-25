@@ -1,5 +1,10 @@
 class CustomersController < ApplicationController
+  
   def index
-  	@customer = CustomerService.new.getCustomer(1)
+  	@customers = CustomerService.new.getCustomers
+  end
+
+  def show
+  	@customer = CustomerService.new.getCustomer(params[:id])
   end
 end
