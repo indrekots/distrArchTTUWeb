@@ -90,4 +90,6 @@ class MockCustomerDAO
 		return customer
 	end
 
+	##TODO: add rest calls for adding a new customer
+
 end
