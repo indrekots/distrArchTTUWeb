@@ -13,3 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function () {
+	$('#add_customer').
+	bind('ajax:success', function(xhr, data, status) {
+		alert(data);
+		$('#notices').append("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>×</button><strong>Success</strong> New customer has been created</div>");
+	})
+});

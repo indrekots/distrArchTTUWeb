@@ -1,5 +1,8 @@
 <div class="hero-unit">
-	<%= form_tag("/customers", :method => "post") do %>
+	<div id="notices">
+	</div>
+
+	<%= form_tag("/customers", :method => "post", :remote => true, :id => "add_customer") do %>
 
 		<p>
 			<%= label_tag(:firstName, "Eesnimi") %>
@@ -30,7 +33,7 @@
 		</p>
 
 		<p>
-			<%= submit_tag("Lisa") %>
+			<%= submit_tag "Lisa", :remote => true %>
 		</p>
 
 	<% end %>

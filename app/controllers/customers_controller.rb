@@ -28,6 +28,9 @@ class CustomersController < ApplicationController
     Rails.logger.info customer.cstType
     Rails.logger.info customer.birthDate
 
-  	redirect_to customers_path
+  	#redirect_to customers_path
+    respond_to do |format|
+      format.json {render :json => "{head: 'Success'}"}
+    end
   end
 end
