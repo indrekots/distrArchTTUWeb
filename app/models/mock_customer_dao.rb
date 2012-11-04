@@ -1,6 +1,11 @@
+require 'rubygems'
+require 'httparty'
 require "active_support"
 
 class MockCustomerDAO
+	BASE_SERVICE_URL = 'localhost/url'
+	base_uri = BASE_SERVICE_URL
+
 
 	def getCustomer(id)
 
@@ -90,6 +95,8 @@ class MockCustomerDAO
 		return customer
 	end
 
-	##TODO: add rest calls for adding a new customer
+	def addCustomer(customer)
+
+	end
 
 end

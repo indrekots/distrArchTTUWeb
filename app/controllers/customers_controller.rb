@@ -21,16 +21,19 @@ class CustomersController < ApplicationController
     customer.cstType = params[:cstType]
     customer.birthDate = params[:birthDate]
 
-    Rails.logger.info "ajee"
   	Rails.logger.info customer.firstName
     Rails.logger.info customer.lastName
     Rails.logger.info customer.identityCode
     Rails.logger.info customer.cstType
     Rails.logger.info customer.birthDate
 
+    CustomerService.new.addCustomer(customer)
+
   	#redirect_to customers_path
     respond_to do |format|
-      format.json {render :json => "{head: 'Success'}"}
+      format.json {render :json => '{"head" : "Success",
+                                     "body" : "A new customer has been created"
+                                     }'}
     end
   end
 end

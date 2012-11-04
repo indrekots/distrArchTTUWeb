@@ -16,5 +16,9 @@ class CustomerService
 		return @customerDAO.getCustomers
 	end
 
+	def addCustomer(customer)
+		@customerDAO.addCustomer(customer)
+	end
+
 
 end
