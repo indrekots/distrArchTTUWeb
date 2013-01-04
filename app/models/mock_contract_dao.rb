@@ -1,0 +1,3 @@
+class MockContractDAO
+
+end

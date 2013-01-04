@@ -96,7 +96,7 @@ class MockCustomerDAO
 	end
 
 	def addCustomer(customer)
-
+	
 	end
 
 end

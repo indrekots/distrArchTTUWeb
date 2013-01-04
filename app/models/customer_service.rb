@@ -19,6 +19,4 @@ class CustomerService
 	def addCustomer(customer)
 		@customerDAO.addCustomer(customer)
 	end
-
-
 end
