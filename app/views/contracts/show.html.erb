@@ -1,0 +1,84 @@
+<div class="container">
+	<div class="hero-unit">
+		<h1>Contract</h1>
+
+		<% if @contract != nil %>
+			<table class="table table-hover table-striped table-bordered">
+				<tr>
+					<td>
+						Name
+					</td>
+
+					<td>
+						<%= @contract.name %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Description
+					</td>
+
+					<td>
+						<%= @contract.description %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Note
+					</td>
+
+					<td>
+						<%= @contract.note %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Contract Number
+					</td>
+
+					<td>
+						<%= @contract.contractNumber %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Valid from
+					</td>
+
+					<td>
+						<%= @contract.validFrom %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Valid to
+					</td>
+
+					<td>
+						<%= @contract.validTo %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Parent Contract
+					</td>
+
+					<td>
+						<%= @contract.parentContract %>
+					</td>
+				</tr>
+			</table>
+		<% else %>
+			<h2>No contract found</h2>
+		<% end %>
+	</div>
+
+	<hr/>
+    <footer>
+    	<p>Hajusarhitektuurid IDU0210 (Sügis 2012)</p>
+    </footer>
+</div>

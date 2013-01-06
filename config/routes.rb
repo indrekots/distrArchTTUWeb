@@ -1,6 +1,7 @@
 Webapp::Application.routes.draw do
   
   resources :customers
+  resources :contracts
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

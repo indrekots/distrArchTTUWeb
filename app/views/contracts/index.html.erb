@@ -1,0 +1,59 @@
+<div class="container">
+
+  <div class="hero-unit">
+    <h1>Contracts</h1>
+    <table class="table table-hover table-striped table-bordered">
+    	<thead>
+			<tr>
+				<th>
+					ID
+				</th>
+
+				<th>
+					Name
+				</th>
+
+				<th>
+					Description
+				</th>
+
+				<th>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @contracts.each do |contract| %>
+				<tr>
+					<td>
+						<%= contract.id %>
+					</td>
+
+					<td>
+						<%= contract.name %>
+					</td>
+
+					<td>
+						<%= contract.description %>
+					</td>
+
+					<td>
+						<%= link_to "View", contract_path(contract.id) %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	
+	<p><%= link_to "Add a new contract", new_contract_path, :class => 'btn btn-primary btn-large' -%></p>
+  </div>
+
+  <hr>
+
+  <footer>
+    <p>Hajusarhitektuurid IDU0210 (Sügis 2012)</p>
+  </footer>
+
+</div> <!-- /container -->
+
+
+
