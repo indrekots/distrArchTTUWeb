@@ -14,7 +14,7 @@ class ContractService
 		return @contractDAO.getContracts
 	end
 
-	def addCustomer(contract)
+	def addContract(contract)
 		@contractDAO.addContract(contract)
 	end
 

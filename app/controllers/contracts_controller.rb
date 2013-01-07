@@ -12,29 +12,26 @@ class ContractsController < ApplicationController
   	@contract = Contract.new
   end
   
-  #def create
-  #	customer = Customer.new
-  #	#Rails.logger.info params[:firstName]
-  #	customer.firstName = params[:firstName]
-  #	customer.lastName = params[:lastName]
-  # customer.identityCode = params[:identityCode]
-  #  customer.cstType = params[:cstType]
-  #  customer.birthDate = params[:birthDate]
-  #
-  #	Rails.logger.info customer.firstName
-  # Rails.logger.info customer.lastName
-  #  Rails.logger.info customer.identityCode
-  #  Rails.logger.info customer.cstType
-  #  Rails.logger.info customer.birthDate
-  #
-  #  CustomerService.new.addCustomer(customer)
-  #
-  #	#redirect_to customers_path
-  # respond_to do |format|
-  #    format.json {render :json => '{"head" : "Success",
-  #                                   "body" : "A new customer has been created"
-  #                                   }'}
-  #  end
-  #end
+  def create
+  	contract = Contract.new
+  	#Rails.logger.info params[:firstName]
+  	contract.name = params[:name]
+    contract.description = params[:description]
+    contract.note = params[:note]
+    contract.contractNumber = params[:contractNumber]
+    contract.validFrom = params[:validFrom]
+    contract.validTo = params[:validTo]
+    contract.parentConractId = params[:parentConractId]
+    contract.conditions = params[:conditions]
+  
+    ContractService.new.addContract(contract)
+  
+  	#redirect_to contracts_path
+    respond_to do |format|
+      format.json {render :json => '{"head" : "Success",
+                                     "body" : "A new contract has been created"
+                                     }'}
+    end
+  end
 
 end

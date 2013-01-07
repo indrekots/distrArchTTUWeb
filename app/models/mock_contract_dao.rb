@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'httparty'
 require "active_support"
 
 class MockContractDAO
@@ -16,6 +18,18 @@ class MockContractDAO
 	end
 
 	def getContracts
+		resultJSON = HTTParty.get('http://hajusssteem.apiary.io/contract/list')
+		decodedJSON =  ActiveSupport::JSON.decode(resultJSON)
+		resultArray = Array.new
+
+		decodedJSON.each do |c|
+			resultArray.push(createContractFromDecodedJSON(c))
+		end
+
+		return resultArray
+	end
+
+	def getContractsmock
 		##TODO: use real resource
 		resultJSON = '[
 						{
@@ -116,4 +130,10 @@ class MockContractDAO
 		return contract
 	end
 
+	def addContract(contract)
+
+	end
+
 end
+
+

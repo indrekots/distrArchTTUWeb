@@ -42,18 +42,12 @@
 
 		<p>
 			<%= label_tag(:parentConractId, "Parent Conract Id") %>
-			<%= text_field_tag :parentConractId, nil, :class => 'datepicker' %>
-			<script type="text/javascript">
-			  $('.datepicker').datepicker();
-			</script>
+			<%= text_field_tag(:parentConractId, nil) %>
 		</p>
 
 		<p>
 			<%= label_tag(:conditions, "Conditions") %>
-			<%= text_field_tag :conditions, nil, :class => 'datepicker' %>
-			<script type="text/javascript">
-			  $('.datepicker').datepicker();
-			</script>
+			<%= text_field_tag(:conditions) %>
 		</p>
 
 		<p>
