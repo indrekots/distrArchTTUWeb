@@ -1,4 +1,6 @@
 class ContractsController < ApplicationController
+
+  Rails.logger = Logger.new(STDOUT)
   
   def index
   	@contracts = ContractService.new.getContracts
@@ -14,14 +16,13 @@ class ContractsController < ApplicationController
   
   def create
   	contract = Contract.new
-  	#Rails.logger.info params[:firstName]
   	contract.name = params[:name]
     contract.description = params[:description]
     contract.note = params[:note]
     contract.contractNumber = params[:contractNumber]
     contract.validFrom = params[:validFrom]
     contract.validTo = params[:validTo]
-    contract.parentConractId = params[:parentConractId]
+    contract.parentContractId = params[:parentConractId]
     contract.conditions = params[:conditions]
   
     ContractService.new.addContract(contract)

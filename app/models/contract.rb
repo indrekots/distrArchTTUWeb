@@ -7,6 +7,6 @@ class Contract
 	attr :validFrom, true
 	attr :validTo, true
 	attr :parentContract, true
-	attr :parentConractId, true
+	attr :parentContractId, true
 	attr :conditions, true
 end

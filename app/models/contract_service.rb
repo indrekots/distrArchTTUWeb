@@ -3,7 +3,7 @@ class ContractService
 	attr :contractDAO, true
 
 	def initialize
-		@contractDAO = MockContractDAO.new
+		@contractDAO = ContractDAO.new
 	end
 
 	def getContract(id)
