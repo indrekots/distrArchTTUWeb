@@ -72,6 +72,7 @@
 					</td>
 				</tr>
 			</table>
+			<p><%= link_to "Edit contract", edit_contract_path(@contract.id), :class => 'btn btn-primary btn-large' -%></p>
 		<% else %>
 			<h2>No contract found</h2>
 		<% end %>

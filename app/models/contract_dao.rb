@@ -53,7 +53,7 @@ class ContractDAO
 		contract.validFrom = decodedJSON["validFrom"]
 		contract.validTo = decodedJSON["validTo"]
 		contract.parentContract = decodedJSON["parentContract"]
-		contract.parentConractId = decodedJSON["parentConractId"]
+		contract.parentContractId = decodedJSON["parentConractId"]
 		contract.conditions = decodedJSON["conditions"]
 		return contract
 	end
