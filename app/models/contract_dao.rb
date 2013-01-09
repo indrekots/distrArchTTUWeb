@@ -66,6 +66,7 @@ class ContractDAO
 			:headers => {
 					"content_type" => "application/json;charset=utf_8"
 				})
+		Rails.logger.info response
 	end
 
 	def createContractFromDecodedJSON(decodedJSON)

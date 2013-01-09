@@ -51,7 +51,7 @@
 					</td>
 
 					<td>
-						<%= link_to "Delete", contract_path(contract.id), :confirm => "Are you sure?", :method => "delete" %>
+						<%= link_to "Delete", contract_path(contract.id), :confirm => "Are you sure?", :method => "delete", :remote => true %>
 					</td>
 				</tr>
 			<% end %>
