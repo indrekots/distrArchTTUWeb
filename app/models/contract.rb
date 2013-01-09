@@ -1,4 +1,4 @@
-class Contract
+class Contract 
 	attr :id, true
 	attr :name, true
 	attr :description, true

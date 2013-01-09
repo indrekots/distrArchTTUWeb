@@ -22,6 +22,9 @@
 
 				<td>
 				</td>
+
+				<td>
+				</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -45,6 +48,10 @@
 
 					<td>
 						<%= link_to "Edit", edit_contract_path(contract.id) %>
+					</td>
+
+					<td>
+						<%= link_to "Delete", contract_path(contract.id), :confirm => "Are you sure?", :method => "delete" %>
 					</td>
 				</tr>
 			<% end %>

@@ -18,4 +18,8 @@ class ContractService
 		@contractDAO.addContract(contract)
 	end
 
+	def deleteContract(id)
+		@contractDAO.deleteContract(id)
+	end
+
 end

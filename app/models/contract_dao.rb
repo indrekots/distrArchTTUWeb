@@ -27,20 +27,45 @@ class ContractDAO
 	end
 
 	def addContract(contract)
-		response = HTTParty.post(BASE_SERVICE_URL + '/contract', :query => {
-			:id => contract.id,
-			:name => contract.name,
-			:description => contract.note,
-			:contractNumber => contract.contractNumber,
-			:validFrom => contract.validFrom,
-			:validTo => contract.validTo,
-			:parentConract => contract.parentContract,
-			:parentConractId => contract.parentContractId,
-			:conditions => contract.conditions
-			},
+		if contract.id.nil?
+			response = HTTParty.post(BASE_SERVICE_URL + '/contract', :query => {
+				:id => contract.id,
+				:name => contract.name,
+				:description => contract.note,
+				:contractNumber => contract.contractNumber,
+				:validFrom => contract.validFrom,
+				:validTo => contract.validTo,
+				:parentConract => contract.parentContract,
+				:parentConractId => contract.parentContractId,
+				:conditions => contract.conditions
+				},
+				:headers => {
+					"content_type" => "application/json;charset=utf_8"
+				})
+		else
+			response = HTTParty.put(BASE_SERVICE_URL + '/contract/' + contract.id.to_s, :query => {
+				:id => contract.id,
+				:name => contract.name,
+				:description => contract.note,
+				:contractNumber => contract.contractNumber,
+				:validFrom => contract.validFrom,
+				:validTo => contract.validTo,
+				:parentConract => contract.parentContract,
+				:parentConractId => contract.parentContractId,
+				:conditions => contract.conditions
+				},
+				:headers => {
+					"content_type" => "application/json;charset=utf_8"
+				})
+			Rails.logger.info response
+		end
+	end
+
+	def deleteContract(id)
+		response = HTTParty.delete(BASE_SERVICE_URL + '/contract/' + id.to_s,
 			:headers => {
-				"content_type" => "application/json;charset=utf_8"
-			})
+					"content_type" => "application/json;charset=utf_8"
+				})
 	end
 
 	def createContractFromDecodedJSON(decodedJSON)
