@@ -1,6 +1,10 @@
 <div class="container">
 
   <div class="hero-unit">
+
+  	<div id="notices">
+	</div>
+
     <h1>Contracts</h1>
     <table class="table table-hover table-striped table-bordered">
     	<thead>
@@ -51,7 +55,7 @@
 					</td>
 
 					<td>
-						<%= link_to "Delete", contract_path(contract.id), :confirm => "Are you sure?", :method => "delete", :remote => true %>
+						<%= link_to "Delete", contract_path(contract.id), :confirm => "Are you sure?", :method => "delete", :remote => true, :class => "delete_contract" %>
 					</td>
 				</tr>
 			<% end %>

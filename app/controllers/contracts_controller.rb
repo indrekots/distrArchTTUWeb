@@ -62,6 +62,13 @@ class ContractsController < ApplicationController
 
   def destroy
     ContractService.new.deleteContract(params[:id])
+
+    respond_to do |format|
+      format.json {render :json => '{"head" : "Success",
+                                     "body" : "Contract has been deleted",
+                                     "id" : ' + params[:id].to_s + '
+                                     }'}
+    end
   end
 
 end
