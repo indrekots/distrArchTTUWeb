@@ -4,7 +4,7 @@ require 'active_support'
 require 'json'
 
 class ContractDAO
-	BASE_SERVICE_URL = 'http://hajusssteem.apiary.io/rest-core/rest'
+	BASE_SERVICE_URL = ServiceHelper.new.getServiceURL
 
 	def getContract(id)
 		resultJSON = HTTParty.get(BASE_SERVICE_URL + '/contract/1')
