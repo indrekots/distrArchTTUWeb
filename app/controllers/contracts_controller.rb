@@ -1,13 +1,20 @@
 class ContractsController < ApplicationController
 
   Rails.logger = Logger.new(STDOUT)
+
+  attr :contractService, true
+
+  def initialize
+    @contractService = ContractService.new
+    super
+  end
   
   def index
-  	@contracts = ContractService.new.getContracts
+  	@contracts = @contractService.getContracts
   end
 
   def show
-  	@contract = ContractService.new.getContract(params[:id])
+  	@contract = @contractService.getContract(params[:id])
   end
   
   def new
@@ -25,7 +32,7 @@ class ContractsController < ApplicationController
     contract.parentContractId = params[:parentConractId]
     contract.conditions = params[:conditions]
   
-    ContractService.new.addContract(contract)
+    @contractService.addContract(contract)
   
   	#redirect_to contracts_path
     respond_to do |format|
@@ -36,11 +43,11 @@ class ContractsController < ApplicationController
   end
 
   def edit
-    @contract = ContractService.new.getContract(params[:id])
+    @contract = @contractService.getContract(params[:id])
   end
 
   def update
-    contract = ContractService.new.getContract(params[:id])
+    contract = @contractService.getContract(params[:id])
 
     contract.name = params[:name]
     contract.description = params[:description]
@@ -51,7 +58,7 @@ class ContractsController < ApplicationController
     contract.parentContractId = params[:parentConractId]
     contract.conditions = params[:conditions]
 
-    ContractService.new.addContract(contract)
+    @contractService.addContract(contract)
 
     respond_to do |format|
       format.json {render :json => '{"head" : "Success",
@@ -61,7 +68,7 @@ class ContractsController < ApplicationController
   end
 
   def destroy
-    ContractService.new.deleteContract(params[:id])
+    @contractService.deleteContract(params[:id])
 
     respond_to do |format|
       format.json {render :json => '{"head" : "Success",
