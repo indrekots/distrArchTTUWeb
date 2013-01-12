@@ -1,11 +1,18 @@
 class CustomersController < ApplicationController
+
+  attr :cutomerService, true
+
+  def initialize
+    @customerService = CustomerService.new
+    super
+  end
   
   def index
-  	@customers = CustomerService.new.getCustomers
+  	@customers = @customerService.getCustomers
   end
 
   def show
-  	@customer = CustomerService.new.getCustomer(params[:id])
+  	@customer = @customerService.getCustomer(params[:id])
   end
 
   def new
@@ -27,7 +34,7 @@ class CustomersController < ApplicationController
     Rails.logger.info customer.cstType
     Rails.logger.info customer.birthDate
 
-    CustomerService.new.addCustomer(customer)
+    @customerService.addCustomer(customer)
 
   	#redirect_to customers_path
     respond_to do |format|
