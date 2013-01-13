@@ -1,0 +1,85 @@
+<div class="container">
+
+  <div class="hero-unit">
+
+  	<div id="notices">
+	</div>
+
+    <h1>Addresses</h1>
+    <table class="table table-hover table-striped table-bordered">
+    	<thead>
+			<tr>
+				<th>
+					ID
+				</th>
+
+				<th>
+					Address
+				</th>
+
+				<th>
+					Country
+				</th>
+
+				<th>
+					Email
+				</th>
+
+				<td>
+				</td>
+
+				<td>
+				</td>
+
+				<td>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @addresses.each do |address| %>
+				<tr>
+					<td>
+						<%= address.id %>
+					</td>
+
+					<td>
+						<%= address.address %>
+					</td>
+
+					<td>
+						<%= address.country %>
+					</td>
+
+					<td>
+						<%= address.email %>
+					</td>
+
+					<td>
+						<%= link_to "View", address_path(address.id) %>
+					</td>
+
+					<td>
+						<%= link_to "Edit", edit_address_path(address.id) %>
+					</td>
+
+					<td>
+						<%= link_to "Delete", address_path(address.id), :confirm => "Are you sure?", :method => "delete", :remote => true, :class => "delete_address" %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	
+	<p><%= link_to "Add a new contract", new_address_path, :class => 'btn btn-primary btn-large' -%></p>
+  </div>
+
+  <hr>
+
+  <footer>
+    <p>Hajusarhitektuurid IDU0210 (Sügis 2012)</p>
+  </footer>
+
+</div> <!-- /container -->
+
+
+

@@ -53,6 +53,16 @@
 						<%= @customer.birthDate %>
 					</td>
 				</tr>
+
+				<tr>
+					<td>
+						Addresses
+					</td>
+
+					<td>
+						<%= link_to "View customer addresses", addresses_path(:id => @customer.id) %>
+					</td>
+				</tr>
 			</table>
 		<% else %>
 			<h2>No customer found</h2>
