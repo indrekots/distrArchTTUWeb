@@ -51,6 +51,12 @@ class CustomersController < ApplicationController
   def update
     customer = @customerService.getCustomer(params[:id])
 
+    customer.firstName = params[:firstName]
+    customer.lastName = params[:lastName]
+    customer.identityCode = params[:identityCode]
+    customer.cstType = params[:cstType]
+    customer.birthDate = params[:birthDate]
+
     @customerService.addCustomer(customer)
 
     respond_to do |format|

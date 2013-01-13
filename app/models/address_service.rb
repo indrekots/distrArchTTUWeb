@@ -17,4 +17,8 @@ class AddressService
 	def addAddress(address)
 		@addressDAO.addAddress(address)
 	end
+
+	def deleteAddress(id, customer_id)
+		@addressDAO.deleteAddress(id, customer_id)
+	end
 end

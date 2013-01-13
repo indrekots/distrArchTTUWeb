@@ -1,0 +1,116 @@
+<div class="container">
+<div class="hero-unit">
+	<div id="notices">
+	</div>
+	<h1>Edit address</h1>
+
+	<%= form_tag("/addresses/" + @address.id.to_s, :method => "put", :remote => true, :id => "update_address", :class => "form-horizontal") do %>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'address', "Address", :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'address', @address.address, :placeholder => "Address" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'country', "Country", :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'country', @address.country, :placeholder => "Country" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'note', nil, :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'note', @address.note, :placeholder => "Note" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'house', 'House', :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'house', @address.house, :placeholder => "House" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'county', 'County', :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'county', @address.county, :placeholder => "County" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'parish', 'Parish', :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'parish', @address.parish, :placeholder => "Parish" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'townCounty', 'Town county', :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'townCounty', @address.townCounty, :placeholder => "Town county" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'mobile', 'Mobile', :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'mobile', @address.mobile, :placeholder => "Mobile" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'phone', 'Phone', :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'phone', @address.phone, :placeholder => "Phone" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'sms', 'SMS', :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'sms', @address.sms, :placeholder => "SMS" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'email', 'Email', :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'email', @address.email, :placeholder => "Email" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<%= hidden_field_tag 'customerId', @address.customerId %>
+
+		<div class="control-group">
+			<%= submit_tag "Update", :remote => true, :class => "btn btn-primary btn-large" %>
+		</div>
+
+	<% end %>
+</div>
+</div>

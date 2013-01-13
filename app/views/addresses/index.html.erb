@@ -59,11 +59,11 @@
 					</td>
 
 					<td>
-						<%= link_to "Edit", edit_address_path(address.id) %>
+						<%= link_to "Edit", edit_address_path(address.id, :customerId => address.customerId) %>
 					</td>
 
 					<td>
-						<%= link_to "Delete", address_path(address.id), :confirm => "Are you sure?", :method => "delete", :remote => true, :class => "delete_address" %>
+						<%= link_to "Delete", address_path(address.id, :customerId => address.customerId), :confirm => "Are you sure?", :method => "delete", :remote => true, :class => "delete_address" %>
 					</td>
 				</tr>
 			<% end %>

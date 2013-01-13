@@ -34,6 +34,14 @@ class AddressDAO
 		end
 	end
 
+	def deleteAddress(id, customerId)
+		response = HTTParty.delete(BASE_SERVICE_URL + '/customer/1/address/1',
+			:headers => {
+					"content_type" => "application/json;charset=utf_8"
+				})
+		Rails.logger.info response
+	end
+
 	private
 	def createAddressFromDecodedJSON(decodedJSON)
 		address = Address.new
