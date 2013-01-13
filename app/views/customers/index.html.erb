@@ -1,6 +1,9 @@
 <div class="container">
 
   <div class="hero-unit">
+  	<div id="notices">
+	</div>
+	
     <h1>Customers</h1>
     <table class="table table-hover table-striped table-bordered">
     	<thead>
@@ -17,7 +20,13 @@
 					Perenimi
 				</th>
 
-				<th>
+				<td>
+				</td>
+
+				<td>
+				</td>
+
+				<td>
 				</td>
 			</tr>
 		</thead>
@@ -38,6 +47,14 @@
 
 					<td>
 						<%= link_to "View", customer_path(customer.id) %>
+					</td>
+
+					<td>
+						<%= link_to "Edit", edit_customer_path(customer.id) %>
+					</td>
+
+					<td>
+						<%= link_to "Delete", customer_path(customer.id), :confirm => "Are you sure?", :method => "delete", :remote => true, :class => "delete_customer" %>
 					</td>
 				</tr>
 			<% end %>

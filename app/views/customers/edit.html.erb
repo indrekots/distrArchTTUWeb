@@ -1,0 +1,64 @@
+<div class="container">
+<div class="hero-unit">
+	<div id="notices">
+	</div>
+	<h1>Edit Customer</h1>
+	
+	<%= form_tag("/customers/" + @customer.id.to_s, :method => "put", :remote => true, :id => "update_customer", :class => "form-horizontal") do %>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'firstName', "First name", :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'firstName', @customer.firstName, :placeholder => "First name" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'lastName', "Last name", :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'lastName', @customer.lastName, :placeholder => "Last name" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'identityCode', "Identity code", :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'identityCode', @customer.identityCode, :placeholder => "Identity code" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'note', "Note", :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'note', @customer.note, :placeholder => "Note" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'birthDate', 'Birthdate', :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'birthDate', @customer.birthDate, :placeholder => "Birthdate", :class => "datepicker" %>	
+		      		<script type="text/javascript">
+					  $('.datepicker').datepicker();
+					</script>
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<%= submit_tag "Update", :remote => true, :class => "btn btn-primary btn-large" %>
+		</div>
+
+	<% end %>
+
+</div>
+</div>

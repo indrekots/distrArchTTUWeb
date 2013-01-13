@@ -5,7 +5,7 @@ class CustomerService
 	attr :customerDAO, true
 
 	def initialize
-		@customerDAO = MockCustomerDAO.new
+		@customerDAO = CustomerDAO.new
 	end
 
 	def getCustomer(id)
@@ -18,5 +18,9 @@ class CustomerService
 
 	def addCustomer(customer)
 		@customerDAO.addCustomer(customer)
+	end
+
+	def deleteCustomer(id)
+		@customerDAO.deleteCustomer(id)
 	end
 end

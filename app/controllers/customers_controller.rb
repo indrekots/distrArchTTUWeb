@@ -43,4 +43,31 @@ class CustomersController < ApplicationController
                                      }'}
     end
   end
+
+  def edit
+    @customer = @customerService.getCustomer(params[:id])
+  end
+
+  def update
+    customer = @customerService.getCustomer(params[:id])
+
+    @customerService.addCustomer(customer)
+
+    respond_to do |format|
+      format.json {render :json => '{"head" : "Success",
+                                     "body" : "Customer has been updated"
+                                     }'}
+    end
+  end
+
+  def destroy
+    @customerService.deleteCustomer(params[:id])
+
+    respond_to do |format|
+      format.json {render :json => '{"head" : "Success",
+                                     "body" : "Customer has been deleted",
+                                     "id" : ' + params[:id].to_s + '
+                                     }'}
+    end
+  end
 end
