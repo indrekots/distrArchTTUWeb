@@ -15,7 +15,7 @@
 //= require_tree .
 
 $(document).ready(function () {
-	$('#add_customer, #add_contract, #update_contract, #update_customer').
+	$('#add_customer, #add_contract, #update_contract, #update_customer, #add_address').
 	bind('ajax:success', function(xhr, data, status) {
 		$('#notices').append("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>×</button><strong>" + data["head"] + "</strong> " + data["body"] + "</div>");
 	})

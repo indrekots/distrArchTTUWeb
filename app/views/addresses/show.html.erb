@@ -1,0 +1,157 @@
+<div class="container">
+	<div class="hero-unit">
+		<h1>Address</h1>
+
+		<% if @address != nil %>
+			<table class="table table-hover table-striped table-bordered">
+				<tr>
+					<td>
+						Address
+					</td>
+
+					<td>
+						<%= @address.address %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Country
+					</td>
+
+					<td>
+						<%= @address.country %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Note
+					</td>
+
+					<td>
+						<%= @address.note %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Created
+					</td>
+
+					<td>
+						<%= @address.created %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Updated
+					</td>
+
+					<td>
+						<%= @address.updated %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						House
+					</td>
+
+					<td>
+						<%= @address.house %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						County
+					</td>
+
+					<td>
+						<%= @address.county %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Parish
+					</td>
+
+					<td>
+						<%= @address.parish %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Town county
+					</td>
+
+					<td>
+						<%= @address.townCounty %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Mobile
+					</td>
+
+					<td>
+						<%= @address.mobile %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Phone
+					</td>
+
+					<td>
+						<%= @address.phone %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						SMS
+					</td>
+
+					<td>
+						<%= @address.sms %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Email
+					</td>
+
+					<td>
+						<%= @address.email %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Address owner
+					</td>
+
+					<td>
+						<%= link_to "View address owner", customer_path(@address.customerId) %>
+					</td>
+				</tr>
+			</table>
+			<p><%= link_to "Edit address", edit_address_path(@address.id, :customerId => @address.customerId), :class => 'btn btn-primary btn-large' -%></p>
+		<% else %>
+			<h2>No address found</h2>
+		<% end %>
+	</div>
+
+	<hr/>
+    <footer>
+    	<p>Hajusarhitektuurid IDU0210 (Sügis 2012)</p>
+    </footer>
+</div>

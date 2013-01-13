@@ -55,7 +55,7 @@
 					</td>
 
 					<td>
-						<%= link_to "View", address_path(address.id) %>
+						<%= link_to "View", address_path(address.id, :customerId => address.customerId) %>
 					</td>
 
 					<td>
@@ -70,7 +70,7 @@
 		</tbody>
 	</table>
 	
-	<p><%= link_to "Add a new contract", new_address_path, :class => 'btn btn-primary btn-large' -%></p>
+	<p><%= link_to "Add a new address", new_address_path(:customerId => @customerId), :class => 'btn btn-primary btn-large' -%></p>
   </div>
 
   <hr>
