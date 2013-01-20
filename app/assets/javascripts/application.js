@@ -20,6 +20,11 @@ $(document).ready(function () {
 		$('#notices').append("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>×</button><strong>" + data["head"] + "</strong> " + data["body"] + "</div>");
 	})
 
+	$('#add_customer, #add_contract, #update_contract, #update_customer, #add_address, #update_address').
+	bind('ajax:failure', function(xhr, data, status) {
+		$('#notices').append("<div class='alert alert-error'><button type='button' class='close' data-dismiss='alert'>×</button><strong>" + data["head"] + "</strong> " + data["body"] + "</div>");
+	})
+
 	$('.delete_contract, .delete_customer, .delete_address').
 	bind('ajax:success', function(xhr, data, status) {
 		$('#notices').append("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>×</button><strong>" + data["head"] + "</strong> " + data["body"] + "</div>");
