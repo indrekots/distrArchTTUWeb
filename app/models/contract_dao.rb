@@ -70,8 +70,8 @@ class ContractDAO
 				:name => contract.name,
 				:description => contract.note,
 				:contractNumber => contract.contractNumber,
-				:validFrom => contract.validFrom,
-				:validTo => contract.validTo,
+				:validFrom => nil,
+				:validTo => nil,
 				:parentConract => contract.parentContract,
 				:parentConractId => contract.parentContractId,
 				:conditions => contract.conditions
