@@ -19,7 +19,7 @@ class CustomerDAO
 	end
 
 	def getCustomer(id)
-		resultJSON = HTTParty.get(BASE_SERVICE_URL + '/customer/1')
+		resultJSON = HTTParty.get(BASE_SERVICE_URL + '/customer/' + id.to_s)
 		decodedJSON = ActiveSupport::JSON.decode(resultJSON.response.body)
 
 		return createCustomerFromDecodedJSON(resultJSON)
