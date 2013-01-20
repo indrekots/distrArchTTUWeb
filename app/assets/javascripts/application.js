@@ -22,6 +22,7 @@ $(document).ready(function () {
 
 	$('#add_customer, #add_contract, #update_contract, #update_customer, #add_address, #update_address').
 	bind('ajax:failure', function(xhr, data, status) {
+		alert('error');
 		$('#notices').append("<div class='alert alert-error'><button type='button' class='close' data-dismiss='alert'>×</button><strong>" + data["head"] + "</strong> " + data["body"] + "</div>");
 	})
 
