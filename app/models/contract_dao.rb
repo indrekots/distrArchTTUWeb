@@ -53,8 +53,8 @@ class ContractDAO
 				:contractNumber => contract.contractNumber,
 				:validFrom => contract.validFrom,
 				:validTo => contract.validTo,
-				:parentConract => contract.parentContract,
-				:parentConractId => nil,
+				#:parentConract => contract.parentContract,
+				#:parentConractId => nil,
 				:conditions => contract.conditions
 				}.to_json,
 			:headers => {
@@ -74,8 +74,8 @@ class ContractDAO
 				:contractNumber => contract.contractNumber,
 				:validFrom => contract.validFrom,
 				:validTo => contract.validTo,
-				:parentConract => contract.parentContract,
-				:parentConractId => nil,
+				#:parentConract => contract.parentContract,
+				#:parentConractId => contract.parentContractId,
 				:conditions => contract.conditions
 				}.to_json,
 			:headers => {
