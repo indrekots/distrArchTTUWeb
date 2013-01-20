@@ -22,7 +22,7 @@ $(document).ready(function () {
 
 	$('#add_customer, #add_contract, #update_contract, #update_customer, #add_address, #update_address').
 	bind('ajax:error', function(xhr, data, status) {
-		$('#notices').append("<div class='alert alert-error'><button type='button' class='close' data-dismiss='alert'>×</button><strong>Failure</strong>Oops, something went wrong</div>");
+		$('#notices').append("<div class='alert alert-error'><button type='button' class='close' data-dismiss='alert'>×</button><strong>Failure</strong> Oops, something went wrong</div>");
 	})
 
 	$('.delete_contract, .delete_customer, .delete_address').

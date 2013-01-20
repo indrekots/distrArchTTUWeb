@@ -28,9 +28,9 @@ class AddressDAO
 
 	def addAddress(address, customerId)
 		if address.id.nil?
-			addNewAddress(address, customerId)
+			return addNewAddress(address, customerId)
 		else
-			addExistingAddress(address, customerId)
+			return addExistingAddress(address, customerId)
 		end
 	end
 
@@ -40,6 +40,7 @@ class AddressDAO
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response
+		return response
 	end
 
 	private
@@ -82,6 +83,7 @@ class AddressDAO
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response
+		return response
 	end
 
 	def addExistingAddress(address, customerId)
@@ -103,6 +105,7 @@ class AddressDAO
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response
+		return response
 	end
 
 end

@@ -28,36 +28,9 @@ class ContractDAO
 
 	def addContract(contract)
 		if contract.id.nil?
-			response = HTTParty.post(BASE_SERVICE_URL + '/contract', :query => {
-				:id => contract.id,
-				:name => contract.name,
-				:description => contract.note,
-				:contractNumber => contract.contractNumber,
-				:validFrom => contract.validFrom,
-				:validTo => contract.validTo,
-				:parentConract => contract.parentContract,
-				:parentConractId => contract.parentContractId,
-				:conditions => contract.conditions
-				},
-				:headers => {
-					"content_type" => "application/json;charset=utf_8"
-				})
+			return addNewContract(contract)
 		else
-			response = HTTParty.put(BASE_SERVICE_URL + '/contract/' + contract.id.to_s, :query => {
-				:id => contract.id,
-				:name => contract.name,
-				:description => contract.note,
-				:contractNumber => contract.contractNumber,
-				:validFrom => contract.validFrom,
-				:validTo => contract.validTo,
-				:parentConract => contract.parentContract,
-				:parentConractId => contract.parentContractId,
-				:conditions => contract.conditions
-				},
-				:headers => {
-					"content_type" => "application/json;charset=utf_8"
-				})
-			Rails.logger.info response
+			return addExistingContract(contract)
 		end
 	end
 
@@ -67,6 +40,47 @@ class ContractDAO
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response
+		return response
+	end
+
+	private 
+	def addNewContract(contract)
+		response = HTTParty.post(BASE_SERVICE_URL + '/contract', :query => {
+				:id => contract.id,
+				:name => contract.name,
+				:description => contract.note,
+				:contractNumber => contract.contractNumber,
+				:validFrom => contract.validFrom,
+				:validTo => contract.validTo,
+				:parentConract => contract.parentContract,
+				:parentConractId => contract.parentContractId,
+				:conditions => contract.conditions
+				},
+				:headers => {
+					"content_type" => "application/json;charset=utf_8"
+				})
+		Rails.logger.info response
+		return response
+	end
+
+	private
+	def addExistingContract(contract)
+		response = HTTParty.put(BASE_SERVICE_URL + '/contract/' + contract.id.to_s, :query => {
+				:id => contract.id,
+				:name => contract.name,
+				:description => contract.note,
+				:contractNumber => contract.contractNumber,
+				:validFrom => contract.validFrom,
+				:validTo => contract.validTo,
+				:parentConract => contract.parentContract,
+				:parentConractId => contract.parentContractId,
+				:conditions => contract.conditions
+				},
+				:headers => {
+					"content_type" => "application/json;charset=utf_8"
+				})
+		Rails.logger.info response
+		return response
 	end
 
 	def createContractFromDecodedJSON(decodedJSON)

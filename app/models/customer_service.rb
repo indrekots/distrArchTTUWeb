@@ -1,6 +1,6 @@
 #require './mock_customer_dao'
 
-class CustomerService
+class CustomerService < GeneralService
 
 	attr :customerDAO, true
 
@@ -24,19 +24,8 @@ class CustomerService
 
 	def deleteCustomer(id)
 		@customerDAO.deleteCustomer(id)
+
+		return isSuccess(response)
 	end
 
-	private
-	def checkResponseForErrors(response)
-		if response.code != 200
-			return true
-		else
-			return false
-		end
-	end
-
-	private
-	def isSuccess(response)
-		return !checkResponseForErrors(response)
-	end
 end

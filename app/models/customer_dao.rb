@@ -27,9 +27,9 @@ class CustomerDAO
 
 	def addCustomer(customer)
 		if customer.id.nil?
-			addNewCustomer(customer)
+			return addNewCustomer(customer)
 		else
-			addExistingCustomer(customer)
+			return addExistingCustomer(customer)
 		end
 	end
 
@@ -39,6 +39,7 @@ class CustomerDAO
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response
+		return response
 	end
 
 	private
