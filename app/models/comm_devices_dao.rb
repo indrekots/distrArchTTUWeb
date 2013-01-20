@@ -42,7 +42,7 @@ class CommDevicesDAO
 	def deleteCommDevice(id, customerId)
 		response = HTTParty.delete(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/device/' + id.to_s,
 			:headers => {
-					"content_type" => "application/json;charset=utf_8"
+					"content_type" => "application/json;charset=utf-8"
 				})
 		Rails.logger.info response
 		return response
@@ -68,7 +68,7 @@ class CommDevicesDAO
 				:order => commDevice.orderb
 				}.to_json,
 			:headers => {
-					"content_type" => "application/json;charset=utf_8"
+					"content_type" => "application/json;charset=utf-8"
 				})
 		Rails.logger.info response
 		return response
@@ -82,7 +82,7 @@ class CommDevicesDAO
 				:order => commDevice.orderb
 				}.to_json,
 			:headers => {
-					"content_type" => "application/json;charset=utf_8"
+					"content_type" => "application/json;charset=utf-8"
 				})
 		Rails.logger.info response
 		return response
