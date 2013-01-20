@@ -61,12 +61,13 @@ class CommDevicesDAO
 	end
 
 	def addNewCommDevice(commDevice, customerId)
-		response = HTTParty.post(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/device/', :query => {
+		response = HTTParty.post(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/device/', 
+			:body => {
 				:created => commDevice.created,
 				:value => commDevice.valueText,
 				:order => commDevice.orderb
-				},
-				:headers => {
+				}.to_json,
+			:headers => {
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response
@@ -74,12 +75,13 @@ class CommDevicesDAO
 	end
 
 	def addExistingCommDevice(commDevice, customerId)
-		response = HTTParty.put(BASE_SERVICE_URL + '/customer/' + customerId + '/device/' + commDevice.id.to_s, :query => {
+		response = HTTParty.put(BASE_SERVICE_URL + '/customer/' + customerId + '/device/' + commDevice.id.to_s, 
+			:body => {
 				:created => commdevice.created,
 				:value => commDevice.valueText,
 				:order => commDevice.orderb
-				},
-				:headers => {
+				}.to_json,
+			:headers => {
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response

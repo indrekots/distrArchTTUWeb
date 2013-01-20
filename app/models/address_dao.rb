@@ -65,7 +65,8 @@ class AddressDAO
 
 	def addNewAddress(address, customerId)
 		Rails.logger.info BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/address/'
-		response = HTTParty.post(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/address/', :query => {
+		response = HTTParty.post(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/address/', 
+			:body => {
 				:address => address.address,
 				:country => address.country,
 				:note => address.note,
@@ -78,8 +79,8 @@ class AddressDAO
 				:phone => address.phone,
 				:sms => address.sms,
 				:email => address.email
-				},
-				:headers => {
+				}.to_json,
+			:headers => {
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response
@@ -87,7 +88,8 @@ class AddressDAO
 	end
 
 	def addExistingAddress(address, customerId)
-		response = HTTParty.put(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/address/' + address.id.to_s, :query => {
+		response = HTTParty.put(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/address/' + address.id.to_s, 
+			:body => {
 				:address => address.address,
 				:country => address.country,
 				:note => address.note,
@@ -100,8 +102,8 @@ class AddressDAO
 				:phone => address.phone,
 				:sms => address.sms,
 				:email => address.email
-				},
-				:headers => {
+				}.to_json,
+			:headers => {
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response

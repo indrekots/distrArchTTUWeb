@@ -6,10 +6,11 @@ class GeneralService
 
 	private
 	def checkResponseForErrors(response)
-		if response.code != 200
-			return true
-		else
+		Rails.logger.info "Response HTTP status code: " + response.code.to_s
+		if response.code >= 200 && response.code < 300
 			return false
+		else
+			return true
 		end
 	end
 end

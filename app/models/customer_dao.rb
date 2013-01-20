@@ -44,7 +44,8 @@ class CustomerDAO
 
 	private
 	def addNewCustomer(customer)
-		response = HTTParty.post(BASE_SERVICE_URL + '/customer', :query => {
+		response = HTTParty.post(BASE_SERVICE_URL + '/customer',
+			:body => {
 				:firstName => customer.firstName,
 				:lastName => customer.lastName,
 				:identityCode => customer.identityCode,
@@ -53,8 +54,8 @@ class CustomerDAO
 				:created => customer.createdBy,
 				:updated => customer.updatedBy,
 				:customerAddress => "null"
-				},
-				:headers => {
+				}.to_json,
+			:headers => {
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response
@@ -63,7 +64,8 @@ class CustomerDAO
 
 	private
 	def addExistingCustomer(customer)
-		response = HTTParty.put(BASE_SERVICE_URL + '/customer/' + customer.id.to_s, :query => {
+		response = HTTParty.put(BASE_SERVICE_URL + '/customer/' + customer.id.to_s, 
+			:body => {
 				:firstName => customer.firstName,
 				:lastName => customer.lastName,
 				:identityCode => customer.identityCode,
@@ -72,8 +74,8 @@ class CustomerDAO
 				:created => customer.createdBy,
 				:updated => customer.updatedBy,
 				:customerAddress => "null"
-				},
-				:headers => {
+				}.to_json,
+			:headers => {
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response

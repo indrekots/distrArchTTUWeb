@@ -45,7 +45,8 @@ class ContractDAO
 
 	private 
 	def addNewContract(contract)
-		response = HTTParty.post(BASE_SERVICE_URL + '/contract', :query => {
+		response = HTTParty.post(BASE_SERVICE_URL + '/contract',
+			:body => {
 				:id => contract.id,
 				:name => contract.name,
 				:description => contract.note,
@@ -55,8 +56,8 @@ class ContractDAO
 				:parentConract => contract.parentContract,
 				:parentConractId => contract.parentContractId,
 				:conditions => contract.conditions
-				},
-				:headers => {
+				}.to_json,
+			:headers => {
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response
@@ -65,20 +66,22 @@ class ContractDAO
 
 	private
 	def addExistingContract(contract)
-		response = HTTParty.put(BASE_SERVICE_URL + '/contract/' + contract.id.to_s, :query => {
+		response = HTTParty.put(BASE_SERVICE_URL + '/contract/' + contract.id.to_s, 
+			:body => {
 				:id => contract.id,
 				:name => contract.name,
 				:description => contract.note,
 				:contractNumber => contract.contractNumber,
-				:validFrom => 2423424,
-				:validTo => 2342342,
+				:validFrom => contract.validFrom,
+				:validTo => contract.validTo,
 				:parentConract => contract.parentContract,
 				:parentConractId => contract.parentContractId,
 				:conditions => contract.conditions
-				},
-				:headers => {
+				}.to_json,
+			:headers => {
 					"content_type" => "application/json;charset=utf_8"
-				})
+			})
+		Rails.logger.info response.request
 		Rails.logger.info response
 		return response
 	end
