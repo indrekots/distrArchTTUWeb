@@ -57,6 +57,7 @@ class CustomerDAO
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response
+		return response
 	end
 
 	private
