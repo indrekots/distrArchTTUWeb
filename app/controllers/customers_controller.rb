@@ -34,9 +34,9 @@ class CustomersController < ApplicationController
     Rails.logger.info customer.cstType
     Rails.logger.info customer.birthDate
 
-    responseStatus = @customerService.addCustomer(customer)
+    isSuccess = @customerService.addCustomer(customer)
 
-    if responseStatus
+    if isSuccess
       respond_to do |format|
         format.json {render :json => '{"head" : "Success",
                                        "body" : "A new customer has been created"
@@ -60,23 +60,31 @@ class CustomersController < ApplicationController
     customer.cstType = params[:cstType]
     customer.birthDate = params[:birthDate]
 
-    @customerService.addCustomer(customer)
+    isSuccess = @customerService.addCustomer(customer)
 
-    respond_to do |format|
-      format.json {render :json => '{"head" : "Success",
-                                     "body" : "Customer has been updated"
-                                     }'}
+    if isSuccess
+      respond_to do |format|
+        format.json {render :json => '{"head" : "Success",
+                                       "body" : "Customer has been updated"
+                                       }'}
+      end
+    else
+      sendAjaxErrorMessage
     end
   end
 
   def destroy
-    @customerService.deleteCustomer(params[:id])
+    isSuccess = @customerService.deleteCustomer(params[:id])
 
-    respond_to do |format|
-      format.json {render :json => '{"head" : "Success",
-                                     "body" : "Customer has been deleted",
-                                     "id" : ' + params[:id].to_s + '
-                                     }'}
+    if isSuccess
+      respond_to do |format|
+        format.json {render :json => '{"head" : "Success",
+                                       "body" : "Customer has been deleted",
+                                       "id" : ' + params[:id].to_s + '
+                                       }'}
+      end
+    else
+      sendAjaxErrorMessage
     end
   end
 

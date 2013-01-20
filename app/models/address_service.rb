@@ -1,4 +1,4 @@
-class AddressService
+class AddressService < GeneralService
 
 	attr :addressDAO, true
 
@@ -15,10 +15,12 @@ class AddressService
 	end
 
 	def addAddress(address)
-		@addressDAO.addAddress(address)
+		response = @addressDAO.addAddress(address)
+		return isSuccess(response)
 	end
 
 	def deleteAddress(id, customer_id)
-		@addressDAO.deleteAddress(id, customer_id)
+		response = @addressDAO.deleteAddress(id, customer_id)
+		return isSuccess(response)
 	end
 end

@@ -1,4 +1,4 @@
-class ContractService
+class ContractService < GeneralService
 
 	attr :contractDAO, true
 
@@ -16,10 +16,12 @@ class ContractService
 
 	def addContract(contract)
 		response = @contractDAO.addContract(contract)
+		return isSuccess(response)
 	end
 
 	def deleteContract(id)
-		@contractDAO.deleteContract(id)
+		response = @contractDAO.deleteContract(id)
+		return isSuccess(response)
 	end
 
 end

@@ -36,13 +36,17 @@ class AddressesController < ApplicationController
 		address.email = params[:email]
 		address.customerId = params[:customerId]
 
-		@addressService.addAddress(address)
+		isSuccess = @addressService.addAddress(address)
 
-		respond_to do |format|
-	      format.json {render :json => '{"head" : "Success",
-	                                     "body" : "A new address has been created"
-	                                     }'}
-	    end
+		if isSuccess
+			respond_to do |format|
+		      format.json {render :json => '{"head" : "Success",
+		                                     "body" : "A new address has been created"
+		                                     }'}
+		    end
+	    else
+	    	sendAjaxErrorMessage
+    	end
 	end
 
 	def edit
@@ -65,23 +69,41 @@ class AddressesController < ApplicationController
 		address.email = params[:email]
 		address.customerId = params[:customerId]
 
-		@addressService.addAddress(address)
+		isSuccess = @addressService.addAddress(address)
 
-	    respond_to do |format|
-	      format.json {render :json => '{"head" : "Success",
-	                                     "body" : "Address has been updated"
-	                                     }'}
-    	end
+		if isSuccess
+		    respond_to do |format|
+		      format.json {render :json => '{"head" : "Success",
+		                                     "body" : "Address has been updated"
+		                                     }'}
+	    	end
+    	else
+    		sendAjaxErrorMessage
+		end
 	end
 
 	def destroy
-    @addressService.deleteAddress(params[:id], params[:customerId])
+    isSuccess = @addressService.deleteAddress(params[:id], params[:customerId])
 
+    if isSuccess
+	    respond_to do |format|
+	      format.json {render :json => '{"head" : "Success",
+	                                     "body" : "Address has been deleted",
+	                                     "id" : ' + params[:id].to_s + '
+	                                     }'}
+	    end
+    else
+    	sendAjaxErrorMessage
+	end
+  end
+
+  private
+  def sendAjaxErrorMessage
     respond_to do |format|
-      format.json {render :json => '{"head" : "Success",
-                                     "body" : "Address has been deleted",
-                                     "id" : ' + params[:id].to_s + '
-                                     }'}
+        format.json {render :json => '{"head" : "Failure",
+                                       "body" : "Oops, something went wrong"
+                                       }',
+                            :status => 500}
     end
   end
 

@@ -1,5 +1,3 @@
-#require './mock_customer_dao'
-
 class CustomerService < GeneralService
 
 	attr :customerDAO, true
@@ -18,13 +16,11 @@ class CustomerService < GeneralService
 
 	def addCustomer(customer)
 		response = @customerDAO.addCustomer(customer)
-
 		return isSuccess(response)
 	end
 
 	def deleteCustomer(id)
-		@customerDAO.deleteCustomer(id)
-
+		response = @customerDAO.deleteCustomer(id)
 		return isSuccess(response)
 	end
 

@@ -32,13 +32,16 @@ class ContractsController < ApplicationController
     contract.parentContractId = params[:parentConractId]
     contract.conditions = params[:conditions]
   
-    @contractService.addContract(contract)
+    isSuccess = @contractService.addContract(contract)
   
-  	#redirect_to contracts_path
-    respond_to do |format|
-      format.json {render :json => '{"head" : "Success",
-                                     "body" : "A new contract has been created"
-                                     }'}
+    if isSuccess
+      respond_to do |format|
+        format.json {render :json => '{"head" : "Success",
+                                       "body" : "A new contract has been created"
+                                       }'}
+      end
+    else
+      sendAjaxErrorMessage
     end
   end
 
@@ -58,23 +61,41 @@ class ContractsController < ApplicationController
     contract.parentContractId = params[:parentConractId]
     contract.conditions = params[:conditions]
 
-    @contractService.addContract(contract)
+    isSuccess = @contractService.addContract(contract)
 
-    respond_to do |format|
-      format.json {render :json => '{"head" : "Success",
-                                     "body" : "Contract has been updated"
-                                     }'}
+    if isSuccess
+      respond_to do |format|
+        format.json {render :json => '{"head" : "Success",
+                                       "body" : "Contract has been updated"
+                                       }'}
+      end
+    else
+      sendAjaxErrorMessage
     end
   end
 
   def destroy
-    @contractService.deleteContract(params[:id])
+    isSuccess = @contractService.deleteContract(params[:id])
 
+    if isSuccess
+      respond_to do |format|
+        format.json {render :json => '{"head" : "Success",
+                                       "body" : "Contract has been deleted",
+                                       "id" : ' + params[:id].to_s + '
+                                       }'}
+      end
+    else
+      sendAjaxErrorMessage
+    end
+  end
+
+  private
+  def sendAjaxErrorMessage
     respond_to do |format|
-      format.json {render :json => '{"head" : "Success",
-                                     "body" : "Contract has been deleted",
-                                     "id" : ' + params[:id].to_s + '
-                                     }'}
+        format.json {render :json => '{"head" : "Failure",
+                                       "body" : "Oops, something went wrong"
+                                       }',
+                            :status => 500}
     end
   end
 
