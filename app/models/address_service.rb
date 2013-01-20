@@ -6,21 +6,21 @@ class AddressService < GeneralService
 		@addressDAO = AddressDAO.new
 	end
 
-	def getAddresses(customer_id)
-		@addressDAO.getAddresses(customer_id)
+	def getAddresses(customerId)
+		@addressDAO.getAddresses(customerId)
 	end
 
-	def getAddress(id, customer_id)
-		@addressDAO.getAddress(id, customer_id)
+	def getAddress(id, customerId)
+		@addressDAO.getAddress(id, customerId)
 	end
 
-	def addAddress(address)
-		response = @addressDAO.addAddress(address)
+	def addAddress(address, customerId)
+		response = @addressDAO.addAddress(address, customerId)
 		return isSuccess(response)
 	end
 
-	def deleteAddress(id, customer_id)
-		response = @addressDAO.deleteAddress(id, customer_id)
+	def deleteAddress(id, customerId)
+		response = @addressDAO.deleteAddress(id, customerId)
 		return isSuccess(response)
 	end
 end

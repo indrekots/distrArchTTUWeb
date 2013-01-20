@@ -1,0 +1,49 @@
+<div class="container">
+	<div class="hero-unit">
+		<h1>Communication device</h1>
+
+		<% if @commDevice != nil %>
+			<table class="table table-hover table-striped table-bordered">
+				<tr>
+					<td>
+						Value text
+					</td>
+
+					<td>
+						<%= @commDevice.valueText %>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Created
+					</td>
+
+					<td>
+						<%= @commDevice.created %>
+					</td>
+				</tr>
+
+				<tr>
+
+				<tr>
+					<td>
+						Device owber
+					</td>
+
+					<td>
+						<%= link_to "View device owner", customer_path(@commDevice.customerId) %>
+					</td>
+				</tr>
+			</table>
+			<p><%= link_to "Edit device", edit_commDevice_path(@commDevice.id, :customerId => @commDevice.customerId), :class => 'btn btn-primary btn-large' -%></p>
+		<% else %>
+			<h2>No device found</h2>
+		<% end %>
+	</div>
+
+	<hr/>
+    <footer>
+    	<p>Hajusarhitektuurid IDU0210 (Sügis 2012)</p>
+    </footer>
+</div>

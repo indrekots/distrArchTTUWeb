@@ -63,6 +63,16 @@
 						<%= link_to "View customer addresses", addresses_path(:customerId => @customer.id) %>
 					</td>
 				</tr>
+
+				<tr>
+					<td>
+						Communication device
+					</td>
+
+					<td>
+						<%= link_to "View customer communication devices", commDevices_path(:customerId => @customer.id) %>
+					</td>
+				</tr>
 			</table>
 			<p><%= link_to "Edit customer", edit_customer_path(@customer.id), :class => 'btn btn-primary btn-large' -%></p>
 		<% else %>

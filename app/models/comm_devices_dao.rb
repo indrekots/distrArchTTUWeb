@@ -7,7 +7,7 @@ class CommDevicesDAO
 	BASE_SERVICE_URL = ServiceHelper.new.getServiceURL
 
 	def getCommDevices(customerId)
-		resultJSON = HTTParty.get(BASE_SERVICE_URL + '/customer/1/device/list')
+		resultJSON = HTTParty.get(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/device/list')
 		decodedJSON = ActiveSupport::JSON.decode(resultJSON.response.body)
 
 		resultArray = Array.new
@@ -22,27 +22,30 @@ class CommDevicesDAO
 	end
 
 	def getCommDevice(id, customerId)
-		resultJSON = HTTParty.get(BASE_SERVICE_URL + '/customer/1/device/1')
+		resultJSON = HTTParty.get(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/device/' + id.to_s)
 		decodedJSON = ActiveSupport::JSON.decode(resultJSON.response.body)
 
 		commDevice = createCommDeviceFromDecodedJSON(resultJSON)
 		commDevice.customerId = customerId
+
+		return commDevice
 	end
 
-	def addCommDevice(commDevice)
+	def addCommDevice(commDevice, customerId)
 		if commDevice.id.nil?
-			addNewCommDevice(commDevice)
+			return addNewCommDevice(commDevice, customerId)
 		else
-			addExistingCommDevice(commDevice)
+			return addExistingCommDevice(commDevice, customerId)
 		end
 	end
 
 	def deleteCommDevice(id, customerId)
-		response = HTTParty.delete(BASE_SERVICE_URL + '/customer/1/device/1',
+		response = HTTParty.delete(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/device/' + id.to_s,
 			:headers => {
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response
+		return response
 	end
 
 	private
@@ -57,9 +60,9 @@ class CommDevicesDAO
 		return commDevice
 	end
 
-	def addNewCommDevice(commDevice)
-		response = HTTParty.post(BASE_SERVICE_URL + '/customer/1/device/', :query => {
-				:created => commdevice.created,
+	def addNewCommDevice(commDevice, customerId)
+		response = HTTParty.post(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/device/', :query => {
+				:created => commDevice.created,
 				:value => commDevice.valueText,
 				:order => commDevice.orderb
 				},
@@ -67,10 +70,11 @@ class CommDevicesDAO
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response
+		return response
 	end
 
-	def addExistingCommDevice(commDevice)
-		response = HTTParty.put(BASE_SERVICE_URL + '/customer/1/device/1', :query => {
+	def addExistingCommDevice(commDevice, customerId)
+		response = HTTParty.put(BASE_SERVICE_URL + '/customer/' + customerId + '/device/' + commDevice.id.to_s, :query => {
 				:created => commdevice.created,
 				:value => commDevice.valueText,
 				:order => commDevice.orderb
@@ -79,6 +83,7 @@ class CommDevicesDAO
 					"content_type" => "application/json;charset=utf_8"
 				})
 		Rails.logger.info response
+		return response
 	end
 
 end

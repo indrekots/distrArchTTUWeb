@@ -13,7 +13,7 @@ class CommDevicesController < ApplicationController
 	end
 
 	def show
-		@commDevice = @commDevicesService.getcommDevice(params[:id], params[:customerId])
+		@commDevice = @commDevicesService.getCommDevice(params[:id], params[:customerId])
 	end
 
 	def new
@@ -31,12 +31,16 @@ class CommDevicesController < ApplicationController
 		commDevice.created = params[:created]
 		
 
-		@commDevicesService.addCommDevice(commDevice)
+		isSuccess = @commDevicesService.addCommDevice(commDevice, params[:customerId])
 
-		respond_to do |format|
-		  format.json {render :json => '{"head" : "Success",
-		                                 "body" : "A new communication device has been created"
-		                                 }'}
+		if isSuccess
+			respond_to do |format|
+			  format.json {render :json => '{"head" : "Success",
+			                                 "body" : "A new communication device has been created"
+			                                 }'}
+			end
+		else
+			sendAjaxErrorMessage
 		end
 	end
 
@@ -54,24 +58,42 @@ class CommDevicesController < ApplicationController
 		commDevice.created = params[:created]
 		
 
-		@commDevicesService.addCommDevice(commDevice)
+		isSuccess = @commDevicesService.addCommDevice(commDevice, params[:customerId])
 
-		respond_to do |format|
-		  format.json {render :json => '{"head" : "Success",
-		                                 "body" : "Communication device has been updated"
-		                                 }'}
+		if isSuccess
+			respond_to do |format|
+			  format.json {render :json => '{"head" : "Success",
+			                                 "body" : "Communication device has been updated"
+			                                 }'}
+			end
+		else
+			sendAjaxErrorMessage
 		end
 	end
 
 	def destroy
-		@commDevicesService.deleteCommDevice(params[:id], params[:customerId])
+		isSuccess = @commDevicesService.deleteCommDevice(params[:id], params[:customerId])
 
-		respond_to do |format|
-		  format.json {render :json => '{"head" : "Success",
-		                                 "body" : "Communication device has been deleted",
-		                                 "id" : ' + params[:id].to_s + '
-		                                 }'}
+		if isSuccess
+			respond_to do |format|
+			  format.json {render :json => '{"head" : "Success",
+			                                 "body" : "Communication device has been deleted",
+			                                 "id" : ' + params[:id].to_s + '
+			                                 }'}
+			end
+		else
+			sendAjaxErrorMessage
 		end
+	end
+
+	private
+    def sendAjaxErrorMessage
+	    respond_to do |format|
+	        format.json {render :json => '{"head" : "Failure",
+	                                       "body" : "Oops, something went wrong"
+	                                       }',
+	                            :status => 500}
+    end
 	end
 
 end

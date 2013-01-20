@@ -36,7 +36,7 @@ class AddressesController < ApplicationController
 		address.email = params[:email]
 		address.customerId = params[:customerId]
 
-		isSuccess = @addressService.addAddress(address)
+		isSuccess = @addressService.addAddress(address, params[:customerId])
 
 		if isSuccess
 			respond_to do |format|

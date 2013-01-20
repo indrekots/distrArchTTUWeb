@@ -1,0 +1,69 @@
+<div class="container">
+
+  <div class="hero-unit">
+
+  	<div id="notices">
+	</div>
+
+    <h1>Communication devices</h1>
+    <table class="table table-hover table-striped table-bordered">
+    	<thead>
+			<tr>
+				<th>
+					ID
+				</th>
+
+				<th>
+					Value text
+				</th>
+
+				<td>
+				</td>
+
+				<td>
+				</td>
+
+				<td>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @commDevices.each do |commDevice| %>
+				<tr>
+					<td>
+						<%= commDevice.id %>
+					</td>
+
+					<td>
+						<%= commDevice.valueText %>
+					</td>
+
+					<td>
+						<%= link_to "View", commDevice_path(commDevice.id, :customerId => commDevice.customerId) %>
+					</td>
+
+					<td>
+						<%= link_to "Edit", edit_commDevice_path(commDevice.id, :customerId => commDevice.customerId) %>
+					</td>
+
+					<td>
+						<%= link_to "Delete", commDevice_path(commDevice.id, :customerId => commDevice.customerId), :confirm => "Are you sure?", :method => "delete", :remote => true, :class => "delete_commDevice" %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	
+	<p><%= link_to "Add a new communication device", new_commDevice_path(:customerId => @customerId), :class => 'btn btn-primary btn-large' -%></p>
+  </div>
+
+  <hr>
+
+  <footer>
+    <p>Hajusarhitektuurid IDU0210 (Sügis 2012)</p>
+  </footer>
+
+</div> <!-- /container -->
+
+
+

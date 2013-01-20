@@ -1,0 +1,35 @@
+<div class="container">
+<div class="hero-unit">
+	<div id="notices">
+	</div>
+
+	<h1>Add a new device</h1>
+	<%= form_tag("/commDevices", :method => "post", :remote => true, :id => "add_commDevice", :class => "form-horizontal") do %>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'valueText', "Value text", :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'valueText', nil, :placeholder => "Value text" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-group">
+		    	<%= label_tag 'commDeviceType', "Device type", :class => 'control-label' %>
+		    	<div class="controls">
+		      		<%= text_field_tag 'commDeviceType', nil, :placeholder => "Device type" %>	
+		    	</div>
+		  	</div>
+		</div>
+
+		<%= hidden_field_tag 'customerId', @commDevice.customerId %>
+
+		<div class="control-group">
+			<%= submit_tag "Lisa", :remote => true, :class => "btn btn-primary btn-large" %>
+		</div>
+
+	<% end %>
+</div>
+</div>
