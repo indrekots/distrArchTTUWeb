@@ -36,7 +36,7 @@ class CustomerDAO
 	def deleteCustomer(id)
 		response = HTTParty.delete(BASE_SERVICE_URL + '/customer/' + id.to_s,
 			:headers => {
-					"content_type" => "application/json;charset=utf_8"
+					"content-type" => "application/json;charset=utf-8"
 				})
 		Rails.logger.info response
 		return response
@@ -56,7 +56,7 @@ class CustomerDAO
 				:customerAddress => "null"
 				}.to_json,
 			:headers => {
-					"content_type" => "application/json;charset=utf_8"
+					"content-type" => "application/json;charset=utf-8"
 				})
 		Rails.logger.info response
 		return response
@@ -76,7 +76,7 @@ class CustomerDAO
 				:customerAddress => "null"
 				}.to_json,
 			:headers => {
-					"content_type" => "application/json;charset=utf_8"
+					"content-type" => "application/json;charset=utf-8"
 				})
 		Rails.logger.info response
 

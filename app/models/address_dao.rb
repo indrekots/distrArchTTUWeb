@@ -37,7 +37,7 @@ class AddressDAO
 	def deleteAddress(id, customerId)
 		response = HTTParty.delete(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/address/' + id.to_s,
 			:headers => {
-					"content_type" => "application/json;charset=utf_8"
+					"content-type" => "application/json;charset=utf-8"
 				})
 		Rails.logger.info response
 		return response
@@ -81,7 +81,7 @@ class AddressDAO
 				:email => address.email
 				}.to_json,
 			:headers => {
-					"content_type" => "application/json;charset=utf_8"
+					"content-type" => "application/json;charset=utf-8"
 				})
 		Rails.logger.info response
 		return response
@@ -104,7 +104,7 @@ class AddressDAO
 				:email => address.email
 				}.to_json,
 			:headers => {
-					"content_type" => "application/json;charset=utf_8"
+					"content-type" => "application/json;charset=utf-8"
 				})
 		Rails.logger.info response
 		return response

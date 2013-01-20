@@ -37,7 +37,7 @@ class ContractDAO
 	def deleteContract(id)
 		response = HTTParty.delete(BASE_SERVICE_URL + '/contract/' + id.to_s,
 			:headers => {
-					"content_type" => "application/json;charset=utf_8"
+					"content-type" => "application/json;charset=utf-8"
 				})
 		Rails.logger.info response
 		return response
@@ -58,7 +58,7 @@ class ContractDAO
 				:conditions => contract.conditions
 				}.to_json,
 			:headers => {
-					"content_type" => "application/json;charset=utf_8"
+					"content-type" => "application/json;charset=utf-8"
 				})
 		Rails.logger.info response
 		return response
@@ -79,7 +79,7 @@ class ContractDAO
 				:conditions => contract.conditions
 				}.to_json,
 			:headers => {
-					"content_type" => "application/json;charset=utf_8"
+					"content-type" => "application/json;charset=utf-8"
 			})
 		Rails.logger.info response.request
 		Rails.logger.info response
