@@ -86,7 +86,7 @@ class CustomersController < ApplicationController
         format.json {render :json => '{"head" : "Failure",
                                        "body" : "Oops, something went wrong"
                                        }',
-                            :status => 404}
+                            :status => 200}
     end
   end
 end
