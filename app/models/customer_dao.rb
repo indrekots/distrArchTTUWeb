@@ -78,6 +78,7 @@ class CustomerDAO
 		Rails.logger.info response
 	end
 
+	private
 	def createCustomerFromDecodedJSON(decodedJSON)
 		customer = Customer.new
 		customer.id = decodedJSON["id"]
@@ -92,6 +93,15 @@ class CustomerDAO
 		customer.createdBy = decodedJSON["createdBy"]
 		customer.updatedBy = decodedJSON["updatedBy"]
 		return customer
+	end
+
+	private
+	def checkResponseCodeForError(response)
+		if response.code != 200
+			return true
+		else
+			return false
+		end
 	end
 
 end
