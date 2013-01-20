@@ -6,8 +6,8 @@ class AddressDAO
 
 	BASE_SERVICE_URL = ServiceHelper.new.getServiceURL
 
-	def getAddresses(customer_id)
-		resultJSON = HTTParty.get(BASE_SERVICE_URL + '/customer/1/address/list')
+	def getAddresses(customerId)
+		resultJSON = HTTParty.get(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/address/list')
 		decodedJSON = ActiveSupport::JSON.decode(resultJSON.response.body)
 
 		resultArray = Array.new
@@ -20,22 +20,22 @@ class AddressDAO
 	end
 
 	def getAddress(id, customerId)
-		resultJSON = HTTParty.get(BASE_SERVICE_URL + '/customer/1/address/1')
+		resultJSON = HTTParty.get(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/address/' + id.to_s)
 		decodedJSON = ActiveSupport::JSON.decode(resultJSON.response.body)
 
 		return createAddressFromDecodedJSON(resultJSON)
 	end
 
-	def addAddress(address)
+	def addAddress(address, customerId)
 		if address.id.nil?
-			addNewAddress(address)
+			addNewAddress(address, customerId)
 		else
-			addExistingAddress(address)
+			addExistingAddress(address, customerId)
 		end
 	end
 
 	def deleteAddress(id, customerId)
-		response = HTTParty.delete(BASE_SERVICE_URL + '/customer/1/address/1',
+		response = HTTParty.delete(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/address/' + id.to_s,
 			:headers => {
 					"content_type" => "application/json;charset=utf_8"
 				})
@@ -62,9 +62,9 @@ class AddressDAO
 		return address
 	end
 
-	def addNewAddress(address)
-		Rails.logger.info BASE_SERVICE_URL + '/customer/1/address/'
-		response = HTTParty.post(BASE_SERVICE_URL + '/customer/1/address/', :query => {
+	def addNewAddress(address, customerId)
+		Rails.logger.info BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/address/'
+		response = HTTParty.post(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/address/', :query => {
 				:address => address.address,
 				:country => address.country,
 				:note => address.note,
@@ -84,8 +84,8 @@ class AddressDAO
 		Rails.logger.info response
 	end
 
-	def addExistingAddress(address)
-		response = HTTParty.put(BASE_SERVICE_URL + '/customer/1/address/2', :query => {
+	def addExistingAddress(address, customerId)
+		response = HTTParty.put(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/address/' + address.id.to_s, :query => {
 				:address => address.address,
 				:country => address.country,
 				:note => address.note,

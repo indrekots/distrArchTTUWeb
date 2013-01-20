@@ -7,7 +7,7 @@ class ContractDAO
 	BASE_SERVICE_URL = ServiceHelper.new.getServiceURL
 
 	def getContract(id)
-		resultJSON = HTTParty.get(BASE_SERVICE_URL + '/contract/1')
+		resultJSON = HTTParty.get(BASE_SERVICE_URL + '/contract/' + id.to_s)
 		decodedJSON = ActiveSupport::JSON.decode(resultJSON.response.body)
 
 		return createContractFromDecodedJSON(resultJSON)
