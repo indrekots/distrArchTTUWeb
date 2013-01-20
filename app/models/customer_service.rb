@@ -17,10 +17,26 @@ class CustomerService
 	end
 
 	def addCustomer(customer)
-		@customerDAO.addCustomer(customer)
+		response = @customerDAO.addCustomer(customer)
+
+		return isSuccess(response)
 	end
 
 	def deleteCustomer(id)
 		@customerDAO.deleteCustomer(id)
+	end
+
+	private
+	def checkResponseForErrors(response)
+		if response.code != 200
+			return true
+		else
+			return false
+		end
+	end
+
+	private
+	def isSuccess(response)
+		return !checkResponseForErrors(response)
 	end
 end

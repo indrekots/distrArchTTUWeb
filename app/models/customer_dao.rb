@@ -74,8 +74,9 @@ class CustomerDAO
 				:headers => {
 					"content_type" => "application/json;charset=utf_8"
 				})
-		Rails.logger.info "Response code: " + response.code.to_s
 		Rails.logger.info response
+
+		return response
 	end
 
 	private
@@ -93,15 +94,6 @@ class CustomerDAO
 		customer.createdBy = decodedJSON["createdBy"]
 		customer.updatedBy = decodedJSON["updatedBy"]
 		return customer
-	end
-
-	private
-	def checkResponseCodeForError(response)
-		if response.code != 200
-			return true
-		else
-			return false
-		end
 	end
 
 end

@@ -15,7 +15,7 @@ class ContractService
 	end
 
 	def addContract(contract)
-		@contractDAO.addContract(contract)
+		response = @contractDAO.addContract(contract)
 	end
 
 	def deleteContract(id)

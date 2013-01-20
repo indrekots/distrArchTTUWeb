@@ -34,13 +34,16 @@ class CustomersController < ApplicationController
     Rails.logger.info customer.cstType
     Rails.logger.info customer.birthDate
 
-    @customerService.addCustomer(customer)
+    responseStatus = @customerService.addCustomer(customer)
 
-  	#redirect_to customers_path
-    respond_to do |format|
-      format.json {render :json => '{"head" : "Success",
-                                     "body" : "A new customer has been created"
-                                     }'}
+    if responseStatus
+      respond_to do |format|
+        format.json {render :json => '{"head" : "Success",
+                                       "body" : "A new customer has been created"
+                                       }'}
+      end
+    else
+      sendAjaxErrorMessage
     end
   end
 
@@ -74,6 +77,16 @@ class CustomersController < ApplicationController
                                      "body" : "Customer has been deleted",
                                      "id" : ' + params[:id].to_s + '
                                      }'}
+    end
+  end
+
+  private
+  def sendAjaxErrorMessage
+    respond_to do |format|
+        format.json {render :json => '{"head" : "Failure",
+                                       "body" : "Oops, something went wrong"
+                                       }',
+                            :status => 500}
     end
   end
 end
