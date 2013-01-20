@@ -49,7 +49,8 @@ class ContractDAO
 			:body => {
 				:id => contract.id,
 				:name => contract.name,
-				:description => contract.note,
+				:description => contract.description,
+				:note => contract.note,
 				:contractNumber => contract.contractNumber,
 				:validFrom => contract.validFrom,
 				:validTo => contract.validTo,
@@ -70,7 +71,8 @@ class ContractDAO
 			:body => {
 				:id => contract.id,
 				:name => contract.name,
-				:description => contract.note,
+				:description => contract.description,
+				:note => contract.note,
 				:contractNumber => contract.contractNumber,
 				:validFrom => contract.validFrom,
 				:validTo => contract.validTo,
