@@ -42,6 +42,18 @@ class CustomerDAO
 		return response
 	end
 
+	def search(firstName)
+		res = HTTParty.get(BASE_SERVICE_URL + '/customer/search',
+			:query => {
+				:firstName => firstName
+				},
+			:headers => {
+				"content-type" => "application/json;charset=utf-8"
+				})
+		Rails.logger.info res
+		return res.response.body
+	end
+
 	private
 	def addNewCustomer(customer)
 		response = HTTParty.post(BASE_SERVICE_URL + '/customer',

@@ -35,5 +35,31 @@ $(document).ready(function () {
 		});
 	})
 
+	$('#search_form').bind('ajax:success', function(xhr, data, status) {
+		$('#customers_table tbody').children().remove();
+		$.each(data, function(index, value) {
+			$('#customers_table tbody').append(getCustomersTableRow(value));
+		});
+
+
+		//$('#notices').append("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>×</button><strong>" + data["head"] + "</strong> " + data["body"] + "</div>");
+	})
+
 
 });
+
+function getCustomersTableRow(data) {
+	return $('<tr></tr>').append($('<td></td>').text(data.id))
+				  .append($('<td></td>').text(data.firstName))
+				  .append($('<td></td>').text(data.lastName))
+				  .append($('<td></td>').append(getCustomerViewLink(data.id)))
+				  .append($('<td></td>').append(getCustomerEditLink(data.id)));
+}
+
+function getCustomerViewLink(id) {
+	 return $('<a></a>').attr('href', '/customers/' + id).text('View');
+}
+
+function getCustomerEditLink(id) {
+	return $('<a></a>').attr('href', '/customers/' + id + '/edit').text('Edit');
+}

@@ -6,6 +6,7 @@ Webapp::Application.routes.draw do
   resources :commDevices
 
   match :controller => 'root', :action => 'index'
+  match "/search" => "customers#search"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -24,4 +24,8 @@ class CustomerService < GeneralService
 		return isSuccess(response)
 	end
 
+	def search(firstName)
+		return @customerDAO.search(firstName)
+	end
+
 end

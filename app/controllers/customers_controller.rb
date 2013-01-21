@@ -88,6 +88,15 @@ class CustomersController < ApplicationController
     end
   end
 
+  def search
+    responseBody = @customerService.search(params[:firstName])
+
+    respond_to do |format|
+        format.json {render :json => responseBody}
+    end
+
+  end
+
   private
   def sendAjaxErrorMessage
     respond_to do |format|
