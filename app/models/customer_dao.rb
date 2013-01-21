@@ -50,6 +50,7 @@ class CustomerDAO
 			:headers => {
 				"content-type" => "application/json;charset=utf-8"
 				})
+		Rails.logger.info res.request
 		Rails.logger.info res
 		return res.response.body
 	end
