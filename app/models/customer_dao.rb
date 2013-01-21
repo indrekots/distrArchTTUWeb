@@ -45,7 +45,7 @@ class CustomerDAO
 	def search(firstName)
 		res = HTTParty.get(BASE_SERVICE_URL + '/customer/search',
 			:query => {
-				:firstName => firstName
+				:firstname => firstName
 				},
 			:headers => {
 				"content-type" => "application/json;charset=utf-8"
