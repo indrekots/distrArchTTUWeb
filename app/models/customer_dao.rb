@@ -65,8 +65,8 @@ class CustomerDAO
 				:note => customer.note,
 				:birthDate => customer.birthDate,
 				:created => customer.createdBy,
-				:updated => customer.updatedBy,
-				:customerAddress => "null"
+				:updated => customer.updatedBy
+				#:customerAddress => "null"
 				}.to_json,
 			:headers => {
 					"content-type" => "application/json;charset=utf-8"
@@ -85,8 +85,8 @@ class CustomerDAO
 				:note => customer.note,
 				:birthDate => customer.birthDate,
 				:created => customer.createdBy,
-				:updated => customer.updatedBy,
-				:customerAddress => "null"
+				:updated => customer.updatedBy
+				#:customerAddress => "null"
 				}.to_json,
 			:headers => {
 					"content-type" => "application/json;charset=utf-8"
