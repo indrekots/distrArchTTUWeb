@@ -68,7 +68,7 @@ class AddressDAO
 		response = HTTParty.post(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/address/', 
 			:body => {
 				:address => address.address,
-				:country => address.country,
+				:country => nil,
 				:note => address.note,
 				#:customerId => address.customerId,
 				:house => address.house,
@@ -91,7 +91,7 @@ class AddressDAO
 		response = HTTParty.put(BASE_SERVICE_URL + '/customer/' + customerId.to_s + '/address/' + address.id.to_s, 
 			:body => {
 				:address => address.address,
-				:country => nil,
+				#:country => address.country,
 				:note => address.note,
 				#:customerId => address.customerId,
 				:house => address.house,
